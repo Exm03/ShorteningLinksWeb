@@ -32,5 +32,11 @@ public class LinkService {
         repository.save(new Link(original, shortLink));
         return "Готово";
     }
+
+    public void deleteLink(Integer id) {
+        Link link = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Link not found"));
+        repository.delete(link);
+    }
 }
 

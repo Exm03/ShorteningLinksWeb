@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+    background-size: cover;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #00c6ff;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00a2d4;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.15);
+}
+
+.link-card a {
+    color: #00c6ff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#message {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.delete-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #ff4d4f;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background: #d9363e;
+}
