@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Link Shortener</title>
+</head>
+<body>
+
+<h2>Все ссылки</h2>
+<ul id="links"></ul>
+
+<h2>Добавление ссылки</h2>
+
+<input type="text" id="original" placeholder="Длинная ссылка">
+<input type="text" id="shortLink" placeholder="Сокращенная ссылка">
+<button onclick="addLink()">Добавить</button>
+
+<p id="message"></p>
+
+<script>
+
+  async function loadLinks() {
+      const response = await fetch("/api/links");
+      const data = await response.json();
+
+      const list = document.getElementById("links");
+      list.innerHTML = "";
+
+      data.forEach(link => {
+          const li = document.createElement("li");
+          li.innerHTML =
+              `• Ссылка <a href="${link.original}" target="_blank">
+                  ${link.shortLink}
+              </a>`;
+          list.appendChild(li);
+      });
+  }
+
+  async function addLink() {
+
+      const original = document.getElementById("original").value;
+      const shortLink = document.getElementById("shortLink").value;
+
+      const response = await fetch("/api/links", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ original, shortLink })
+      });
+
+      const result = await response.json();
+
+      document.getElementById("message").innerText = result.message;
+
+      if (result.message === "Готово") {
+          document.getElementById("original").value = "";
+          document.getElementById("shortLink").value = "";
+          loadLinks();
+      }
+  }
+
+  loadLinks();
+
+</script>
+
+</body>
+</html>
